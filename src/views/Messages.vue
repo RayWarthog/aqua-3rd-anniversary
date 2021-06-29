@@ -75,73 +75,78 @@ export default {
     }
   },
   mounted () {
-    AOS.init({
-      offset: 120,
-      delay: 50,
-      duration: 1000,
-      mirror: true,
-      once: false
-    })
-    const masonry = new Masonry(
-      document.querySelector('#messages'),
-      {
-        itemSelector: '.message-card',
-        columnWidth: '.message-card',
-        transitionDuration: 0
-      }
-    )
-    masonry.on('layoutComplete', function () {
-      AOS.refresh()
-    })
-    document.querySelectorAll('img').forEach(item => {
-      item.addEventListener('load', function (e) {
-        // AOS.refresh()
-        masonry.layout()
+    const comp = this
+    this.$nextTick(function () {
+      // Code that will run only after the
+      // entire view has been rendered
+      AOS.init({
+        offset: 120,
+        delay: 50,
+        duration: 1000,
+        mirror: true,
+        once: false
       })
-    })
+      const masonry = new Masonry(
+        document.querySelector('#messages'),
+        {
+          itemSelector: '.message-card',
+          columnWidth: '.message-card',
+          transitionDuration: 0
+        }
+      )
+      masonry.on('layoutComplete', function () {
+        AOS.refresh()
+      })
+      document.querySelectorAll('img').forEach(item => {
+        item.addEventListener('load', function (e) {
+          // AOS.refresh()
+          masonry.layout()
+        })
+      })
 
-    $('.message-image,.message-youtube-vid').magnificPopup({
-      type: 'image',
-      gallery: {
-        enabled: true
-      },
-      image: {
-        titleSrc: function (item) {
-          let caption = item.el.attr('author')
-          if (typeof item.el.attr('title') !== 'undefined') {
-            caption = caption + '<small>' + item.el.attr('title') + '</small>'
-          }
-          return caption
-        }
-      },
-      iframe: {
-        markup: '<div class="mfp-iframe-scaler">' +
-            '<div class="mfp-close"></div>' +
-            '<iframe class="mfp-iframe" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' +
-            '<div class="mfp-title"></div>' +
-          '</div>',
-        patterns: {
-          youtube: {
-            index: 'youtube.com/',
-            id: 'v=',
-            src: '//www.youtube-nocookie.com/embed/%id%?autoplay=1' // URL that will be set as a source for iframe.
-          }
-        }
-      },
-      callbacks: {
-        markupParse: function (template, values, item) {
-          if (item.type === 'iframe') {
-            values.title = item.el.attr('author')
+      $('.message-image,.message-youtube-vid').magnificPopup({
+        type: 'image',
+        gallery: {
+          enabled: true
+        },
+        image: {
+          titleSrc: function (item) {
+            let caption = item.el.attr('author')
             if (typeof item.el.attr('title') !== 'undefined') {
-              values.title = values.title + '<small>' + item.el.attr('title') + '</small>'
+              caption = caption + '<small>' + item.el.attr('title') + '</small>'
+            }
+            return caption
+          }
+        },
+        iframe: {
+          markup: '<div class="mfp-iframe-scaler">' +
+              '<div class="mfp-close"></div>' +
+              '<iframe class="mfp-iframe" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' +
+              '<div class="mfp-title"></div>' +
+            '</div>',
+          patterns: {
+            youtube: {
+              index: 'youtube.com/',
+              id: 'v=',
+              src: '//www.youtube-nocookie.com/embed/%id%?autoplay=1' // URL that will be set as a source for iframe.
+            }
+          }
+        },
+        callbacks: {
+          markupParse: function (template, values, item) {
+            if (item.type === 'iframe') {
+              values.title = item.el.attr('author')
+              if (typeof item.el.attr('title') !== 'undefined') {
+                values.title = values.title + '<small>' + item.el.attr('title') + '</small>'
+              }
             }
           }
         }
-      }
-    })
+      })
 
-    this.aos = AOS
-    this.masonry = masonry
+      comp.aos = AOS
+      comp.masonry = masonry
+    })
   }
 }
 </script>
