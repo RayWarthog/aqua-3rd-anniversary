@@ -1,9 +1,11 @@
 <template>
+  <div id="bg-image"></div>
   <div id="nav">
     <router-link to="/">Home</router-link> |
     <router-link to="/messages">Messages</router-link>
   </div>
-  <div id="app">
+  <div id="bg-container"></div>
+  <div id="app-content">
     <router-view v-slot="{ Component }">
       <transition name="fade" mode="out-in">
         <component :is="Component" />
@@ -29,7 +31,16 @@
   opacity: 0
 }
 
-body {
-  background-color: orange;
+#bg-image {
+  position: fixed;
+  background-image: url('~@/assets/images/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: -99;
+  /* filter: brightness(70%); */
 }
 </style>

@@ -73,6 +73,7 @@ export default {
   width: calc(100% - 5rem - 2px);
   border: 1px solid rgba(0,0,0,.125);
   border-radius: .25rem;
+  box-shadow: 3px 3px #888888;
 }
 
 .image-container {
