@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import debounce from 'lodash/debounce'
+
 export default {
   data () {
     return {
@@ -38,10 +40,11 @@ export default {
     }
   },
   mounted () {
-    window.addEventListener('scroll', this.onScroll)
+    this.onScrollDebounced = debounce(this.onScroll, 100)
+    window.addEventListener('scroll', this.onScrollDebounced)
   },
   beforeUnmount () {
-    window.removeEventListener('scroll', this.onScroll)
+    window.removeEventListener('scroll', this.onScrollDebounced)
   }
 }
 </script>
