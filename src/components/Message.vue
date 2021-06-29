@@ -4,7 +4,13 @@
     has_image: message.images.length > 0 ? true : false,
     has_video: message.youtube_id ? true : false
   }">
-  <div class="message-card-sender">{{ message.name }}</div>
+    <div class="message-card-top">
+      <div class="message-card-sender">{{ message.name }}</div>
+      <div class="sender-icons">
+        <span :class="'product ' + message.product"></span>
+        <span :class="'crest ' + message.crest"></span>
+      </div>
+    </div>
     <div class="message-card-message"><p :lang=message.lang>{{ message.message }}</p></div>
     <template v-for="image in message.images" :key="image.idx">
       <div class="image-container">
@@ -140,6 +146,58 @@ img {
   width: 100%;
   height: 100%;
   z-index: 10;
+}
+
+.message-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.crest, .product {
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 2.5rem;
+  height: 2.5rem;
+  background-size: contain;
+}
+.product {
+  margin-right: 1rem;
+}
+
+.crest.gold {
+  background-image: url('~@/assets/images/icons/kiryukaicrestgold.png');
+}
+.crest.green {
+  background-image: url('~@/assets/images/icons/kiryukaicrestgreen.png');
+}
+.crest.pink {
+  background-image: url('~@/assets/images/icons/kiryukaicrestpink.png');
+}
+.crest.purple {
+  background-image: url('~@/assets/images/icons/kiryukaicrestpurple.png');
+}
+.crest.rainbow {
+  background-image: url('~@/assets/images/icons/kiryukaicrestrainbow.png');
+}
+.crest.silver {
+  background-image: url('~@/assets/images/icons/kiryukaicrestsilver.png');
+}
+.crest.orange {
+  background-image: url('~@/assets/images/icons/kiryukaicrestorange.png');
+}
+
+.product.coffee {
+  background-image: url('~@/assets/images/icons/Asacocoffee.png');
+}
+.product.drink {
+  background-image: url('~@/assets/images/icons/cocodrink.png');
+}
+.product.shot {
+  background-image: url('~@/assets/images/icons/cocoshot.png');
+}
+.product.tail {
+  background-image: url('~@/assets/images/icons/cocoztail.png');
 }
 
 @media (min-width:801px)  {

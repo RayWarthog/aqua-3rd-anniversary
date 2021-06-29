@@ -36,6 +36,8 @@ export default {
   },
   data: () => {
     const filteredMessages = []
+    const crestOptions = ['gold', 'green', 'pink', 'purple', 'rainbow', 'silver', 'orange']
+    const productOptions = ['coffee', 'drink', 'shot', 'tail']
     MessagesCSV.map(
       (record, idx) => {
         const filteredRecord = {
@@ -46,7 +48,9 @@ export default {
           youtube_id: null,
           has_media: false,
           lang: null,
-          nsfw: false
+          nsfw: false,
+          crest: crestOptions[Math.floor(Math.random() * crestOptions.length)],
+          product: productOptions[Math.floor(Math.random() * productOptions.length)]
         }
         if (record['Text Submission (Accepted/Pending/Rejected/NONE)'] === 'Accepted') {
           filteredRecord.message = record['Enter your message:']
