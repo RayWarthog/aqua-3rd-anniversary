@@ -15,11 +15,9 @@ import MessagesCSV from '@/assets/csv/messages.csv'
 
 import Masonry from 'masonry-layout'
 import AOS from 'aos'
-import 'aos/dist/aos.css'
 
 import $ from 'jquery'
 import 'magnific-popup/dist/jquery.magnific-popup'
-import 'magnific-popup/dist/magnific-popup.css'
 
 export default {
   name: 'Messages',
@@ -150,6 +148,9 @@ export default {
   }
 }
 </script>
+
+<style src="aos/dist/aos.css"></style>
+<style src="magnific-popup/dist/magnific-popup.css"></style>
 
 <style>
 .mfp-title {

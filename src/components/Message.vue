@@ -26,6 +26,15 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'Message',
+  props: {
+    message: Object
+  }
+}
+</script>
+
 <style scoped>
 .message-card {
   padding: 1.5rem;
@@ -109,14 +118,4 @@ img {
     width: calc(50% - 5rem - 2px);
   }
 }
-
 </style>
-
-<script>
-export default {
-  name: 'Message',
-  props: {
-    message: Object
-  }
-}
-</script>
