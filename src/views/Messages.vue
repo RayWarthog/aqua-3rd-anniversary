@@ -45,7 +45,8 @@ export default {
           images: [],
           youtube_id: null,
           has_media: false,
-          lang: null
+          lang: null,
+          nsfw: false
         }
         if (record['Text Submission (Accepted/Pending/Rejected/NONE)'] === 'Accepted') {
           filteredRecord.message = record['Enter your message:']
@@ -73,6 +74,10 @@ export default {
             image.image_file_small = require('@/assets/images/fanart/small/' + filename + '_Small.' + ext)
             filteredRecord.images.push(image)
             filteredRecord.has_media = true
+
+            if (record['Is this lewd?'] === 'Yes') {
+              filteredRecord.nsfw = true
+            }
           })
         }
         if (!filteredRecord.message && !filteredRecord.has_media) {
@@ -128,9 +133,9 @@ export default {
 
       $('.message-image,.message-youtube-vid').magnificPopup({
         type: 'image',
-        gallery: {
-          enabled: true
-        },
+        // gallery: {
+        //   enabled: true
+        // },
         image: {
           titleSrc: function (item) {
             let caption = item.el.attr('author')
@@ -183,6 +188,10 @@ export default {
 
 .mfp-title {
   position: absolute;
+}
+
+.mfp-figure small {
+  white-space: pre-wrap;
 }
 
 @media (min-width:1025px) {

@@ -8,9 +8,19 @@
     <div class="message-card-message"><p :lang=message.lang>{{ message.message }}</p></div>
     <template v-for="image in message.images" :key="image.idx">
       <div class="image-container">
-        <a class="message-image" :href=image.image_file :author=message.name :title=message.message>
-          <img loading="lazy" :src=image.image_file_small alt="">
-        </a>
+        <div class="image-inner-wrapper">
+          <a class="message-image" :href=image.image_file :author=message.name :title=message.message>
+            <img loading="lazy"
+            :src=image.image_file_small
+            alt=""
+            @click="unblur"
+            v-bind:class="{
+              is_nsfw: message.nsfw,
+              blur: (message.nsfw && !(message.idx in spoiler_dismissed)) ? true: false
+            }">
+          </a>
+          <small class="nsfw-caption" v-if="message.nsfw">NSFW</small>
+        </div>
       </div>
     </template>
     <template v-if="message.youtube_id">
@@ -33,11 +43,29 @@ export default {
   name: 'Message',
   props: {
     message: Object
+  },
+  data: function () {
+    return {
+      spoiler_dismissed: {}
+    }
+  },
+  methods: {
+    unblur: function (event) {
+      if (this.message.nsfw && !(this.message.idx in this.spoiler_dismissed)) {
+        this.spoiler_dismissed[this.message.idx] = true
+        event.stopPropagation()
+        event.preventDefault()
+      }
+    }
   }
 }
 </script>
 
 <style scoped>
+.blur {
+  filter: blur(30px);
+}
+
 .message-card {
   padding: 1.5rem;
   background-color: white;
@@ -60,6 +88,16 @@ export default {
 .video-inner-wrapper {
   display: flex;
   flex-direction: column;
+}
+
+.image-inner-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.nsfw-caption {
+  color: red;
+  font-weight: bold;
 }
 
 .message-card-sender {
