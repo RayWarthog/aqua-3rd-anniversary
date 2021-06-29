@@ -4,9 +4,6 @@ npm run build
 
 Set-Location dist
 
-# Copy 404.html for gh pages
-Copy-Item "index.html" -Destination "404.html"
-
 # if you are deploying to a custom domain
 
 # echo 'www.example.com' > CNAME

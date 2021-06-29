@@ -12,9 +12,6 @@ npm run build
 
 cd dist
 
-# Copy 404.html for gh pages
-cp index.html 404.html
-
 # if you are deploying to a custom domain
 
 # echo 'www.example.com' > CNAME
