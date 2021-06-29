@@ -1,6 +1,6 @@
 <template>
   <div id="bg-image"></div>
-  <div id="nav">
+  <div id="nav" :class="{ 'navbar--hidden': !showNavbar }">
     <router-link class="nav-item" to="/">Home</router-link>
     <router-link class="nav-item" to="/messages">Messages</router-link>
   </div>
@@ -14,22 +14,60 @@
   </div>
 </template>
 
+<script>
+export default {
+  data () {
+    return {
+      showNavbar: true,
+      lastScrollPosition: 0
+    }
+  },
+  methods: {
+    onScroll () {
+      const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+      if (currentScrollPosition < 0) {
+        return
+      }
+      // Stop executing this function if the difference between
+      // current scroll position and last scroll position is less than some offset
+      if (Math.abs(currentScrollPosition - this.lastScrollPosition) < 60) {
+        return
+      }
+      this.showNavbar = currentScrollPosition < this.lastScrollPosition
+      this.lastScrollPosition = currentScrollPosition
+    }
+  },
+  mounted () {
+    window.addEventListener('scroll', this.onScroll)
+  },
+  beforeUnmount () {
+    window.removeEventListener('scroll', this.onScroll)
+  }
+}
+</script>
+
+<style src="aos/dist/aos.css"></style>
+<style src="magnific-popup/dist/magnific-popup.css"></style>
+
 <style>
 @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Kosugi+Maru&family=Patrick+Hand&family=Roboto&display=swap');
 
 #nav {
-  overflow: hidden;
+  overflow: auto;
   background-color: #333;
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
   z-index: 99;
   font-family: 'Roboto';
+  transform: translate3d(0, 0, 0);
+  transition: 0.1s all ease-out;
+  position: fixed;
+  white-space: nowrap;
 }
 
 #nav a {
-  float: left;
-  display: block;
+  display: inline-block;
   color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
@@ -39,10 +77,16 @@
 #nav a:hover, #nav a.router-link-active {
   background: orange;
   color: black;
+  font-weight: bolder;
+}
+
+#nav.navbar--hidden {
+  transform: translate3d(0, -100%, 0);
 }
 
 #app-content {
   padding-top: 10px;
+  margin-top: 46.4px;
 }
 
 .fade-enter-active, .fade-leave-active {
@@ -69,16 +113,6 @@
   height: 100vh;
   z-index: -99;
   /* filter: brightness(70%); */
-}
-
-@media (min-width:801px)  {
-  /* tablet, landscape iPad, lo-res laptops ands desktops */
-  #nav {
-    position: fixed;
-  }
-  #app-content {
-    margin-top: 46.4px;
-  }
 }
 
 </style>

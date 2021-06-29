@@ -1,6 +1,6 @@
 <template>
   <div id="messages-view">
-    <div class="media-filter-toggle-wrapper">
+    <div class="media-filter-toggle-wrapper" data-aos="fade-in">
       <div class="media-filter-toggle">
         <ToggleSwitch
         id="media-filter-toggle-checkbox"
@@ -181,9 +181,6 @@ export default {
   }
 }
 </script>
-
-<style src="aos/dist/aos.css"></style>
-<style src="magnific-popup/dist/magnific-popup.css"></style>
 
 <style>
 .media-filter-toggle {

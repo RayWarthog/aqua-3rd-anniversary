@@ -62,7 +62,7 @@ export default {
 .pure-material-switch > span::before {
     content: "";
     float: right;
-    display: inline-block;
+    /* display: inline-block; */
     margin: 5px 0 5px 10px;
     border-radius: 7px;
     width: 36px;
