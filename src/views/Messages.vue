@@ -1,8 +1,12 @@
 <template>
   <div id="messages-view">
-    <div id="messages">
+    <div class="media-filter-toggle">
+      <input id="media-filter-toggle-checkbox" type="checkbox" v-model="show_media_only">
+      <label for="media-filter-toggle-checkbox">Show messages with media only</label>
+    </div>
+    <div id="messages" v-bind:class="{'show-media-only': show_media_only}">
       <template v-for="message in messages" :key="message.idx">
-        <Message data-aos="fade-in" :message="message"/>
+        <Message v-show="!show_media_only || message.has_media" data-aos="fade-in" :message="message"/>
       </template>
     </div>
   </div>
@@ -34,6 +38,7 @@ export default {
           message: null,
           images: [],
           youtube_id: null,
+          has_media: false,
           lang: null
         }
         if (record['Text Submission (Accepted/Pending/Rejected/NONE)'] === 'Accepted') {
@@ -43,8 +48,9 @@ export default {
             filteredRecord.lang = 'ja'
           }
         }
-        if (record['Video Submission (Accepted/Pending/Rejected/NONE)'] === 'Accepted') {
+        if (record['Video Submission (Accepted/Pending/Rejected/NONE)'] === 'Accepted' && record['Youtube ID']) {
           filteredRecord.youtube_id = record['Youtube ID']
+          filteredRecord.has_media = true
         }
         if (record['Image Submission (Accepted/Pending/Rejected/NONE)'] === 'Accepted' && record['Uploaded file name']) {
           const imageFiles = record['Uploaded file name'].split(',')
@@ -60,16 +66,27 @@ export default {
             const filename = fileparts.pop()
             image.image_file_small = require('@/assets/images/fanart/small/' + filename + '_Small.' + ext)
             filteredRecord.images.push(image)
+            filteredRecord.has_media = true
           })
         }
-        if (!filteredRecord.message && !filteredRecord.image_file && !filteredRecord.youtube_id) {
+        if (!filteredRecord.message && !filteredRecord.has_media) {
           return
         }
         filteredMessages.push(filteredRecord)
       }
     )
     return {
+      show_media_only: false,
       messages: filteredMessages
+    }
+  },
+  watch: {
+    show_media_only: function () {
+      const masonry = this.masonry
+      this.$nextTick(function () {
+        masonry.reloadItems()
+        masonry.layout()
+      })
     }
   },
   mounted () {
@@ -78,6 +95,7 @@ export default {
       // Code that will run only after the
       // entire view has been rendered
       AOS.init({
+        disable: 'mobile',
         offset: 120,
         delay: 50,
         duration: 1000,
@@ -87,7 +105,7 @@ export default {
       const masonry = new Masonry(
         document.querySelector('#messages'),
         {
-          itemSelector: '.message-card',
+          itemSelector: '.message-card:not([style*="display: none"])',
           columnWidth: '.message-card',
           transitionDuration: 0
         }
@@ -155,5 +173,17 @@ export default {
 <style>
 .mfp-title {
   position: absolute;
+}
+
+@media (min-width:1025px) {
+  .show-media-only .message-card.message-card.has_image, .show-media-only .message-card.message-card.has_video {
+    width: calc(100% - 5rem - 2px);
+  }
+}
+
+@media (min-width:1281px) {
+  .show-media-only .message-card.message-card.has_image, .show-media-only .message-card.message-card.has_video {
+    width: calc(50% - 5rem - 2px);
+  }
 }
 </style>

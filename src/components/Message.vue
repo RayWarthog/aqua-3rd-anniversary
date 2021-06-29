@@ -15,13 +15,15 @@
     </template>
     <template v-if="message.youtube_id">
       <div class="video-container">
-        <a class="message-youtube-vid mfp-iframe" :href="'http://www.youtube.com/watch?v=' + message.youtube_id" :author=message.name :title=message.message>
-          <img
-          :src="'https://img.youtube.com/vi/' + message.youtube_id + '/hqdefault.jpg'"
-          alt="">
-        </a>
+        <div class="video-inner-wrapper">
+          <a class="message-youtube-vid mfp-iframe" :href="'http://www.youtube.com/watch?v=' + message.youtube_id" :author=message.name :title=message.message>
+            <img
+            :src="'https://img.youtube.com/vi/' + message.youtube_id + '/hqdefault.jpg'"
+            alt="">
+          </a>
+          <small class="video-caption">YouTube</small>
+        </div>
       </div>
-      <small>YouTube</small>
     </template>
   </div>
 </template>
@@ -48,6 +50,16 @@ export default {
 .image-container {
   display: flex;
   justify-content: center;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+}
+
+.video-inner-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .message-card-sender {
