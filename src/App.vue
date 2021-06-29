@@ -1,30 +1,35 @@
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/messages">Messages</router-link>
   </div>
-  <router-view/>
+  <div id="app">
+    <router-view v-slot="{ Component }">
+      <transition name="fade" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
+  </div>
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import 'https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Kosugi+Maru&family=Patrick+Hand&display=swap');
+
+.fade-enter-active, .fade-leave-active {
+  transition-property: opacity;
+  transition-duration: .25s;
 }
 
-#nav {
-  padding: 30px;
+.fade-enter-active {
+  transition-delay: .25s;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.fade-enter, .fade-leave-active {
+  opacity: 0
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+body {
+  background-color: orange;
 }
 </style>
