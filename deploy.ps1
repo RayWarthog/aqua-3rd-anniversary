@@ -1,19 +1,11 @@
-#!/usr/bin/env sh
-
-# abort on errors
-
-set -e
-
-# build
+$ErrorActionPreference = "Stop"
 
 npm run build
 
-# navigate into the build output directory
-
-cd dist
+Set-Location dist
 
 # Copy 404.html for gh pages
-cp index.html 404.html
+Copy-Item "index.html" -Destination "404.html"
 
 # if you are deploying to a custom domain
 
@@ -31,4 +23,4 @@ git commit -m 'deployment'
 
 git push -f -u origin gh-pages
 
-cd -
+Set-Location -
