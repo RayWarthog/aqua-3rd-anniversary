@@ -1,8 +1,12 @@
 <template>
   <div id="messages-view">
-    <div class="media-filter-toggle">
-      <input id="media-filter-toggle-checkbox" type="checkbox" v-model="show_media_only">
-      <label for="media-filter-toggle-checkbox">Show messages with media only</label>
+    <div class="media-filter-toggle-wrapper">
+      <div class="media-filter-toggle">
+        <ToggleSwitch
+        id="media-filter-toggle-checkbox"
+        v-model:checked="show_media_only"
+        label="Show messages with media only"/>
+      </div>
     </div>
     <div id="messages" v-bind:class="{'show-media-only': show_media_only}">
       <template v-for="message in messages" :key="message.idx">
@@ -15,6 +19,7 @@
 <script>
 // @ is an alias to /src
 import Message from '@/components/Message.vue'
+import ToggleSwitch from '@/components/ToggleSwitch.vue'
 import MessagesCSV from '@/assets/csv/messages.csv'
 
 import Masonry from 'masonry-layout'
@@ -26,7 +31,8 @@ import 'magnific-popup/dist/jquery.magnific-popup'
 export default {
   name: 'Messages',
   components: {
-    Message
+    Message,
+    ToggleSwitch
   },
   data: () => {
     const filteredMessages = []
@@ -171,6 +177,10 @@ export default {
 <style src="magnific-popup/dist/magnific-popup.css"></style>
 
 <style>
+.media-filter-toggle {
+  margin-left: 1rem;
+}
+
 .mfp-title {
   position: absolute;
 }
