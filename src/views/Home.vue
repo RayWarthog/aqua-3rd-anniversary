@@ -58,7 +58,7 @@
         </AsacocoBoard>
       </section>
       <div class="divider-height"></div>
-      <section data-aos="fade-in" class="full-page-height">
+      <section data-aos="fade-in" id="final-letter-sect" class="full-page-height">
         <AsacocoBoard>
           <div id="final-letter">
             <p>Dear Coco,</p>
@@ -237,12 +237,31 @@ section {
   font-weight: bolder;
   text-decoration: none;
   color: black;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 #final-letter {
   white-space: pre-wrap;
-  font-size: 3rem;
+  font-size: 1.5rem;
   font-family: 'Architects Daughter', cursive;
+}
+
+#final-letter-sect {
+  display: flex;
+  align-items: center;
+}
+
+@media (min-width:481px)  {
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+  #final-letter, #message-reroute-link {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width:801px)  {
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+  #final-letter, #message-reroute-link {
+    font-size: 3rem;
+  }
 }
 </style>
