@@ -1,8 +1,8 @@
 <template>
   <div id="bg-image"></div>
   <div id="nav" :class="{ 'navbar--hidden': !showNavbar }">
-    <router-link class="nav-item" to="/">Home</router-link>
-    <router-link class="nav-item" to="/messages">Messages</router-link>
+    <router-link class="nav-item" to="/">Home ホーム</router-link>
+    <router-link class="nav-item" to="/messages">Messages ココへの贈り物</router-link>
   </div>
   <vue-progress-bar></vue-progress-bar>
   <div id="bg-container"></div>
@@ -79,7 +79,7 @@ export default {
 
 <style>
 @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
-@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Kosugi+Maru&family=Patrick+Hand&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Kosugi+Maru&family=Patrick+Hand&family=Noto+Sans+JP&family=Roboto&display=swap');
 
 #nav {
   overflow: auto;
