@@ -51,7 +51,7 @@
       </section>
       <div class="divider-height"></div>
       <section data-aos="fade-in">
-        <AsacocoBoard boardTitle="Individual Messages, Fanart and Videos" boardTitleJP="ホーム、ココへの贈り物、参加者">
+        <AsacocoBoard boardTitle="Individual Messages, Fanart and Videos" boardTitleJP="ココへの贈り物">
           <div id="ind-message-sect-container">
             <router-link id="message-reroute-link" class="nav-item" to="/messages">>>> View all of them here!</router-link>
           </div>
