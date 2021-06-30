@@ -278,12 +278,17 @@ export default {
   flex-wrap: wrap;
 }
 
+.participants-partial {
+  padding-right: 10px;
+}
+
 .canvas-credit-title {
   font-weight: bold;
 }
 
 .canvas-credit {
   margin-top: 5px;
+  padding-right: 10px;
 }
 
 p {
