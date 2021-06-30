@@ -3,7 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="<%= htmlWebpackPlugin.options.description %>">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="og:title" content="<%= htmlWebpackPlugin.options.title %>" />
+    <meta name="og:description" content="<%= htmlWebpackPlugin.options.description %>">
+    <meta name="og:image" content="<%= htmlWebpackPlugin.options.image %>">
+
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
     <script type="text/javascript">
