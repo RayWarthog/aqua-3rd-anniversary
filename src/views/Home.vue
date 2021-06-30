@@ -5,8 +5,9 @@
           <img id="welcome-img" src="@/assets/images/thankscoco.png" alt="">
         </AsacocoBoard>
       </section>
+      <div class="divider-height"></div>
       <section data-aos="fade-in">
-        <AsacocoBoard boardTitle="Drawpiles" boardTitleJP="ドゥロー・パイル">
+        <AsacocoBoard boardTitle="Drawpiles" boardTitleJP="イラスト">
           <div class="board-note">Organized by the Hololive Fan Discord server</div>
           <div class="drawpile-images">
             <template v-for="drawpile_image in drawpile_images" :key="drawpile_image.src">
@@ -17,8 +18,9 @@
           </div>
         </AsacocoBoard>
       </section>
+      <div class="divider-height"></div>
       <section data-aos="fade-in">
-        <AsacocoBoard boardTitle="Videos" boardTitleJP="動画">
+        <AsacocoBoard boardTitle="Videos" boardTitleJP="ファン動画">
           <div class="video-container">
             <div class="youtube-video-title-container">
               <div class="youtube-video-title">I'm a Magic Dragon</div>
@@ -47,7 +49,30 @@
           </div>
         </AsacocoBoard>
       </section>
-      <section class="quarter-page-height"></section>
+      <div class="divider-height"></div>
+      <section data-aos="fade-in">
+        <AsacocoBoard boardTitle="Individual Messages, Fanart and Videos" boardTitleJP="ホーム、ココへの贈り物、参加者">
+          <div id="ind-message-sect-container">
+            <router-link id="message-reroute-link" class="nav-item" to="/messages">>>> View all of them here!</router-link>
+          </div>
+        </AsacocoBoard>
+      </section>
+      <div class="divider-height"></div>
+      <section data-aos="fade-in" class="full-page-height">
+        <AsacocoBoard>
+          <div id="final-letter">
+            <p>Dear Coco,</p>
+
+            <p>This ending only signals the beginning of something new.<br>
+            You've left behind a legacy that can't be measured by numbers or described by words.<br>
+            A Kiryu Coco-shaped gift to fans across the world.<br>
+            Joy that will be fondly remembered for weeks, months, even years from now.<br>
+            Goodbyes are too sad, so we'll part with these words:</p>
+
+            <p>See you again, motherfucker.</p>
+          </div>
+        </AsacocoBoard>
+      </section>
   </div>
 </template>
 
@@ -141,7 +166,7 @@ section {
   min-height: 100vh;
 }
 
-.quarter-page-height {
+.divider-height {
   min-height: 25vh;
 }
 
@@ -204,4 +229,20 @@ section {
   height: 100%;
 }
 
+#ind-message-sect-container {
+  text-align: right;
+}
+
+#message-reroute-link {
+  font-weight: bolder;
+  text-decoration: none;
+  color: black;
+  font-size: 3rem;
+}
+
+#final-letter {
+  white-space: pre-wrap;
+  font-size: 3rem;
+  font-family: 'Architects Daughter', cursive;
+}
 </style>
