@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/coco-graduation/' : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
   chainWebpack: config => {
     config.module
       .rule('csv')

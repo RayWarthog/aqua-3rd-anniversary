@@ -6,7 +6,7 @@ Set-Location dist
 
 # if you are deploying to a custom domain
 
-# echo 'www.example.com' > CNAME
+Write-Output 'nextme.me' > CNAME
 
 git init
 

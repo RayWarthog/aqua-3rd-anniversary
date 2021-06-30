@@ -14,7 +14,7 @@ cd dist
 
 # if you are deploying to a custom domain
 
-# echo 'www.example.com' > CNAME
+echo 'nextme.me' > CNAME
 
 git init
 
