@@ -17,6 +17,37 @@
           </div>
         </AsacocoBoard>
       </section>
+      <section data-aos="fade-in">
+        <AsacocoBoard boardTitle="Videos" boardTitleJP="動画">
+          <div class="video-container">
+            <div class="youtube-video-title-container">
+              <div class="youtube-video-title">I'm a Magic Dragon</div>
+              <div class="board-note">by the Tatsunoko Discord server</div>
+            </div>
+            <div class="youtube-video">
+              <div>
+                <iframe title="I'm a Magic Dragon 『parody 'Puff the Magic Dragon'』Kiryu Coco tribute" src="https://www.youtube-nocookie.com/embed/cw2gJDILFfw"
+                          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                          allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+          <div class="video-container">
+            <div class="youtube-video-title-container">
+              <div class="youtube-video-title">Shiny Smily Story (EN. Version) Cover</div>
+              <div class="board-note">by the Hololive Fan Discord server</div>
+            </div>
+            <div class="youtube-video">
+              <div>
+                <iframe title="Hololive Fan Server // Shiny Smily Story (EN. Version) // Our gift to Kiryu Coco" src="https://www.youtube-nocookie.com/embed/f1Hro2er8OQ"
+                          frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                          allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </AsacocoBoard>
+      </section>
+      <section class="quarter-page-height"></section>
   </div>
 </template>
 
@@ -110,6 +141,10 @@ section {
   min-height: 100vh;
 }
 
+.quarter-page-height {
+  min-height: 25vh;
+}
+
 .board-note {
   text-align: right;
   font-weight: bold;
@@ -133,6 +168,39 @@ section {
 .drawpile-image img {
   width: 100%;
   padding-top: 25px;
+  height: 100%;
+}
+
+.video-container {
+  margin-bottom: 50px;
+}
+
+.video-container:last-of-type {
+  margin-bottom: 0;
+}
+
+.youtube-video-title {
+  text-align: center;
+  font-size: 2rem;
+  font-family: 'Architects Daughter';
+}
+
+.youtube-video {
+  max-width: 1280px;
+  margin: 0px auto;
+}
+
+.youtube-video > div {
+  position: relative;
+  padding-bottom: 75%;
+  height: 0px;
+}
+
+.youtube-video iframe {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
   height: 100%;
 }
 
