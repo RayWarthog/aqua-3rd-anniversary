@@ -5,7 +5,7 @@
       <p>bigchickennugget</p>
     </CreditsBoard>
     <CreditsBoard credit_title="Website Development">
-      <p>Warthog</p>
+      <p><a href="https://github.com/RayWarthog" target="_blank">Warthog</a></p>
     </CreditsBoard>
     <CreditsBoard credit_title="Contributors">
       <p>BaKamen</p>
