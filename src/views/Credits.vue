@@ -159,7 +159,7 @@
     <CreditsBoard credit_title="Special Thanks">
       <p>Kiryu Coco Fan Discord Server</p>
       <p>Hololive Fan Discord</p>
-      <p>HololiveEN Fan Server (HEFS)</p>
+      <p>Hololive English Fan Server (HEFS)</p>
       <p><a href="https://hololive.wiki/wiki/Fan_Discords">And the other Hololive fan Discord servers</a></p>
     </CreditsBoard>
   </div>
