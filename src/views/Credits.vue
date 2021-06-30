@@ -2,7 +2,7 @@
   <div id="credits">
     <CreditsBoard credit_title="Project Leads">
       <p>Ninjastahr</p>
-      <p>bigchiknnugg</p>
+      <p>bigchickennugget</p>
     </CreditsBoard>
     <CreditsBoard credit_title="Website Development">
       <p>Warthog</p>
@@ -110,7 +110,7 @@
       </div>
     </CreditsBoard>
     <CreditsBoard credit_title="Operation Magic Dragon">
-      <div class="board-note">by the Kiryu Coco Discord server</div>
+      <div class="board-note">by the Kiryu Coco Fan Discord Server</div>
       <div class="participants">
         <div class="participants-partial">
           <p>@AngelTail2</p>
@@ -157,9 +157,9 @@
       </div>
     </CreditsBoard>
     <CreditsBoard credit_title="Special Thanks">
-      <p>Kiryu Coco Discord server</p>
+      <p>Kiryu Coco Fan Discord Server</p>
       <p>Hololive Fan Discord</p>
-      <p>Hololive English Fan Server (HEFS)</p>
+      <p>HololiveEN Fan Server (HEFS)</p>
       <p><a href="https://hololive.wiki/wiki/Fan_Discords">And the other Hololive fan Discord servers</a></p>
     </CreditsBoard>
   </div>

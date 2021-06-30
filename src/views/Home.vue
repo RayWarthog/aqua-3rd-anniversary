@@ -24,7 +24,7 @@
           <div class="video-container">
             <div class="youtube-video-title-container">
               <div class="youtube-video-title">I'm a Magic Dragon</div>
-              <div class="board-note">by the Kiryu Coco Discord server</div>
+              <div class="board-note">by the Kiryu Coco Fan Discord Server</div>
             </div>
             <div class="youtube-video">
               <div>
