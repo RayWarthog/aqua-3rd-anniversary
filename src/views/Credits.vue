@@ -102,7 +102,6 @@
             <p>★Umbrilla★#2686</p>
             <p>MarioSonicLife</p>
             <p>IsoHrl#8803</p>
-            <p>ale / nish (ニッシュ)#8034</p>
             <p>jinx's zed#6969</p>
             <p>izumi#4200</p>
             <p>tacticaldragon57#5472</p>
