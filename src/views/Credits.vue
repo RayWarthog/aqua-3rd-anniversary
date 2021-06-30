@@ -18,6 +18,12 @@
     </CreditsBoard>
     <CreditsBoard credit_title="Drawpile">
       <div class="board-note">by the Hololive Fan Discord server</div>
+      <div class="canvas-credit">
+        <div class="canvas-credit-title">Organizer/Maintainer</div>
+        <div>
+          <p>rice#1789</p>
+        </div>
+      </div>
       <div class="canvas-credits-container">
         <div class="canvas-credit">
           <div class="canvas-credit-title">Canvas 1</div>
@@ -25,7 +31,7 @@
             <p>shumai#6969</p>
             <p>Pdeo#2005</p>
             <p>Knockoff Red#1061</p>
-            <p>Nekomaster9000(emotes)#2563</p>
+            <p>Nekomaster9000#2563</p>
             <p>siyuki7#8181</p>
             <p>justahumanweeb#3232</p>
             <p>Lupin#6944</p>
@@ -105,6 +111,57 @@
             <p>ayenull#6969</p>
             <p>Urcier#1234</p>
             <p>Farelle#4525</p>
+          </div>
+        </div>
+      </div>
+    </CreditsBoard>
+    <CreditsBoard credit_title="Shiny Smily Story (EN) Cover">
+      <div class="board-note">by the Hololive Fan Discord Server</div>
+      <div class="canvas-credit">
+        <div class="canvas-credit-title">Mixing and Video</div>
+        <div>
+          <p>Regent (@reg_546)</p>
+        </div>
+      </div>
+      <div class="canvas-credit-title">Vocals</div>
+      <div class="canvas-credits-container">
+        <div class="canvas-credit">
+          <div>
+            <p>klevly</p>
+            <p>De_Solrac</p>
+            <p>Hardtgang</p>
+            <p>TheBitStick</p>
+            <p>Kaizeshu</p>
+            <p>《Commissar☆Egâlité》</p>
+            <p>CorvusFall</p>
+            <p>GoodBoyChend</p>
+            <p>MINICUBANT</p>
+            <p>Ni-Ni</p>
+            <p>Tomura</p>
+            <p>Julius Caёsaя</p>
+            <p>RushカラーP</p>
+            <p>ChaoticIdiot</p>
+            <p>jinx's zed</p>
+            <p>JUNO</p>
+          </div>
+        </div>
+        <div class="canvas-credit">
+          <div>
+            <p>FongSifu</p>
+            <p>jin_rusaki</p>
+            <p>ZoZoGuy</p>
+            <p>Code Machinima (MarioLuigi)</p>
+            <p>drunk as i please</p>
+            <p>mute-tation</p>
+            <p>Madekuji-san</p>
+            <p>芋洗坂ボリス</p>
+            <p>Mochi</p>
+            <p>りき丸</p>
+            <p>Mango</p>
+            <p>日向のじろきょー/Hyuga no Jirokyo</p>
+            <p>Azrien Stewart</p>
+            <p>カルマ</p>
+            <p>SoyMilk</p>
           </div>
         </div>
       </div>
