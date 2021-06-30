@@ -24,7 +24,7 @@
           <div class="video-container">
             <div class="youtube-video-title-container">
               <div class="youtube-video-title">I'm a Magic Dragon</div>
-              <div class="board-note">by the Tatsunoko Discord server</div>
+              <div class="board-note">by the Kiryu Coco Discord server</div>
             </div>
             <div class="youtube-video">
               <div>
@@ -140,10 +140,6 @@ export default {
     }
   },
   mounted () {
-    // Hide navbar initially
-    if (this.$root.$data.lastScrollPosition === 0) {
-      this.$root.$data.showNavbar = false
-    }
     this.initMagnificPopup()
     this.initAOS()
   }
