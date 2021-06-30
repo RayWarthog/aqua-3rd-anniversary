@@ -91,25 +91,30 @@ export default {
       }
     )
     return {
+      is_scrolling: false,
+      to_refresh_layout: false,
       show_media_only: false,
       messages: filteredMessages
     }
   },
-  watch: {
-    show_media_only: function () {
-      const masonry = this.masonry
-      this.$nextTick(function () {
-        masonry.reloadItems()
-        masonry.layout()
-      })
-    }
-  },
-  mounted () {
-    const comp = this
-    this.$nextTick(function () {
-      // Code that will run only after the
-      // entire view has been rendered
-      AOS.init({
+  methods: {
+    refreshMasonry: function () {
+      setTimeout(() => {
+        this.masonry.layout()
+      }, 150)
+    },
+    checkIsScrolling () {
+      this.is_scrolling = true
+      if (this.timer !== null) {
+        clearTimeout(this.timer)
+      }
+      this.timer = setTimeout(() => {
+        this.is_scrolling = false
+      }, 150)
+    },
+    initAOS () {
+      this.aos = AOS
+      this.aos.init({
         disable: 'mobile',
         offset: 120,
         delay: 50,
@@ -117,7 +122,9 @@ export default {
         mirror: true,
         once: false
       })
-      const masonry = new Masonry(
+    },
+    initMasonry () {
+      this.masonry = new Masonry(
         document.querySelector('#messages'),
         {
           itemSelector: '.message-card:not([style*="display: none"])',
@@ -125,16 +132,19 @@ export default {
           transitionDuration: 0
         }
       )
-      masonry.on('layoutComplete', function () {
-        AOS.refresh()
+      this.masonry.on('layoutComplete', () => {
+        if (this.aos) {
+          this.aos.refresh()
+        }
+        this.$Progress.finish()
       })
-      document.querySelectorAll('img').forEach(item => {
-        item.addEventListener('load', function (e) {
-          // AOS.refresh()
-          masonry.layout()
+      document.querySelectorAll('#messages img').forEach(item => {
+        item.addEventListener('load', (e) => {
+          this.to_refresh_layout = true
         })
       })
-
+    },
+    initMagnificPopup () {
       $('.message-image,.message-youtube-vid').magnificPopup({
         type: 'image',
         // gallery: {
@@ -174,10 +184,52 @@ export default {
           }
         }
       })
-
-      comp.aos = AOS
-      comp.masonry = masonry
+    }
+  },
+  watch: {
+    show_media_only: function () {
+      this.$nextTick(() => {
+        this.$Progress.start()
+        this.masonry.reloadItems()
+        this.refreshMasonry()
+      })
+    },
+    to_refresh_layout: function () {
+      if (!this.to_refresh_layout) {
+        return
+      }
+      if (this.is_scrolling) {
+        return
+      }
+      this.to_refresh_layout = false
+      this.$nextTick(() => {
+        this.$Progress.start()
+        this.refreshMasonry()
+      })
+    },
+    is_scrolling: function () {
+      if (!this.is_scrolling && this.to_refresh_layout) {
+        this.to_refresh_layout = false
+        this.$nextTick(() => {
+          this.$Progress.start()
+          this.refreshMasonry()
+        })
+      }
+    }
+  },
+  mounted () {
+    this.timer = null
+    window.addEventListener('scroll', this.checkIsScrolling)
+    this.$nextTick(() => {
+      // Code that will run only after the
+      // entire view has been rendered
+      this.initMagnificPopup()
+      this.initMasonry()
+      this.initAOS()
     })
+  },
+  beforeUnmount () {
+    window.removeEventListener('scroll', this.checkIsScrolling)
   }
 }
 </script>
@@ -193,6 +245,13 @@ export default {
 
 .mfp-figure small {
   white-space: pre-wrap;
+}
+
+@media (min-width:801px)  {
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+  .show-media-only .message-card.message-card.has_image, .show-media-only .message-card.message-card.has_video {
+    width: calc(100% - 5rem - 2px);
+  }
 }
 
 @media (min-width:1025px) {

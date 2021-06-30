@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@aacassandra/vue3-progressbar": "^1.0.3",
     "aos": "^2.3.4",
     "core-js": "^3.6.5",
     "csv-loader": "^3.0.3",
