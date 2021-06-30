@@ -3,6 +3,7 @@
   <div id="nav" :class="{ 'navbar--hidden': !showNavbar }">
     <router-link class="nav-item" to="/">Home ホーム</router-link>
     <router-link class="nav-item" to="/messages">Messages ココへの贈り物</router-link>
+    <router-link class="nav-item" to="/credits">Credits 参加者</router-link>
   </div>
   <vue-progress-bar></vue-progress-bar>
   <div id="bg-container"></div>

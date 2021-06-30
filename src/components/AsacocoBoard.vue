@@ -25,6 +25,7 @@ export default {
 <style scoped>
 .asacoco-board {
     background-color: rgb(255, 255, 255, 0.8);
+    border-radius: 10px;
 }
 
 .board-content {
@@ -45,6 +46,7 @@ export default {
     font-weight: bolder;
     padding: 10px;
     margin-left: 1rem;
+    margin-right: 2rem;
     display: inline-flex;
     /* justify-content: center; */
     flex-direction: column;
