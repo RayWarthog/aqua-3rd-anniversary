@@ -22,7 +22,6 @@ export default {
 .credits-board {
   padding: 1.5rem;
   background-color: white;
-  margin: 1rem;
   border: 1px solid rgba(0,0,0,.125);
   border-radius: .25rem;
   box-shadow: 3px 3px #888888;
@@ -39,6 +38,6 @@ export default {
 .credit-names {
   font-family: 'Patrick Hand';
   font-size: 1.5rem;
-  line-height: 1px;
 }
+
 </style>

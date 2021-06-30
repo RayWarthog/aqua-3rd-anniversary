@@ -238,7 +238,8 @@ export default {
         document.querySelector('#credits'),
         {
           itemSelector: '.credits-board',
-          columnWidth: '.credits-board'
+          columnWidth: '.credits-board',
+          gutter: 15
         }
       )
     }
@@ -246,6 +247,11 @@ export default {
   mounted () {
     this.$nextTick(() => {
       this.initMasonry()
+      window.addEventListener('load', () => {
+        if (this.masonry) {
+          this.masonry.layout()
+        }
+      })
     })
   }
 }
@@ -255,11 +261,10 @@ export default {
 .board-note {
   text-align: right;
   font-weight: bold;
-  line-height: 1;
 }
 
 .credits-board {
-  margin-right: 5px;
+  margin-bottom: 15px;
 }
 
 .credit-names a {
@@ -274,11 +279,22 @@ export default {
 }
 
 .canvas-credit-title {
-  line-height: 1;
   font-weight: bold;
 }
 
 .canvas-credit {
   margin-top: 5px;
+}
+
+p {
+  margin: 0;
+}
+
+@media (min-width:801px)  {
+  /* tablet, landscape iPad, lo-res laptops ands desktops */
+  #credits {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 </style>
