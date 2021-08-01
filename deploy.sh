@@ -14,13 +14,13 @@ cd dist
 
 # if you are deploying to a custom domain
 
-echo 'nextme.me' > CNAME
+# echo '' > CNAME
 
 git init
 
 git branch -m gh-pages
 
-git remote add origin https://github.com/RayWarthog/coco-graduation.git
+git remote add origin https://github.com/RayWarthog/aqua-3rd-anniversary.git
 
 git add -A
 

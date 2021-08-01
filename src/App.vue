@@ -1,9 +1,10 @@
 <template>
   <div id="bg-image"></div>
   <div id="nav" :class="{ 'navbar--hidden': !showNavbar }">
-    <router-link class="nav-item" to="/">Home ホーム</router-link>
-    <router-link class="nav-item" to="/messages">Messages ココへの贈り物</router-link>
-    <router-link class="nav-item" to="/credits">Credits 参加者</router-link>
+    <router-link class="nav-item" to="/">Home</router-link>
+    <router-link class="nav-item" to="/video">Video</router-link>
+    <router-link class="nav-item" to="/messages">Messages</router-link>
+    <router-link class="nav-item" to="/credits">Credits</router-link>
   </div>
   <vue-progress-bar></vue-progress-bar>
   <div id="bg-container"></div>
@@ -84,7 +85,7 @@ export default {
 
 #nav {
   overflow: auto;
-  background-color: #333;
+  background-color: #F5BECE;
   top: 0; /* Position the navbar at the top of the page */
   width: 100%; /* Full width */
   z-index: 99;
@@ -97,15 +98,15 @@ export default {
 
 #nav a {
   display: inline-block;
-  color: #f2f2f2;
+  color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
 
 #nav a:hover, #nav a.router-link-active {
-  background: orange;
-  color: black;
+  background: white;
+  color: #F5BECE;
   font-weight: bolder;
 }
 
@@ -133,7 +134,7 @@ export default {
 
 #bg-image {
   position: fixed;
-  background-image: url('~@/assets/images/background.jpg');
+  background-image: url('~@/assets/images/background.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;

@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? '/aqua-3rd-anniversary/' : '/',
   chainWebpack: config => {
     config.module
       .rule('csv')
@@ -15,9 +15,9 @@ module.exports = {
     config
       .plugin('html')
       .tap(args => {
-        args[0].title = 'Thank you Coco 会長'
-        args[0].description = 'A farewell gift dedicated to Kiryu Coco, our beloved dragon of Hololive'
-        args[0].image = 'https://nextme.me/cover.jpg'
+        args[0].title = '湊あくあ 3周年記念プロジェクト Minato Aqua 3rd anniversary project'
+        args[0].description = 'Aqua congrats on your 3st ah we mean 3rd anniversary!!'
+        args[0].image = 'https://raywarthog.github.io/aqua-3rd-anniversary/cover.jpg'
         return args
       })
   }

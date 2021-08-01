@@ -12,6 +12,8 @@
     "aos": "^2.3.4",
     "core-js": "^3.6.5",
     "csv-loader": "^3.0.3",
+    "flag-icon-css": "^3.5.0",
+    "i18n-iso-countries": "^6.8.0",
     "jquery": "^3.6.0",
     "lodash.debounce": "^4.0.8",
     "magnific-popup": "^1.1.0",

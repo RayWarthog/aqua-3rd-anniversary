@@ -6,13 +6,13 @@ Set-Location dist
 
 # if you are deploying to a custom domain
 
-Write-Output 'nextme.me' > CNAME
+# Write-Output '' > CNAME
 
 git init
 
 git branch -m gh-pages
 
-git remote add origin https://github.com/RayWarthog/coco-graduation.git
+git remote add origin https://github.com/RayWarthog/aqua-3rd-anniversary.git
 
 git add -A
 

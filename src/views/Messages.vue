@@ -1,12 +1,6 @@
 <template>
   <div id="messages-view">
     <div class="media-filter-toggle-wrapper" data-aos="fade-in">
-      <div class="media-filter-toggle">
-        <ToggleSwitch
-        id="media-filter-toggle-checkbox"
-        v-model:checked="show_media_only"
-        label="Show messages with media only"/>
-      </div>
     </div>
     <div id="messages" v-bind:class="{'show-media-only': show_media_only}">
       <template v-for="message in messages" :key="message.idx">
@@ -19,7 +13,6 @@
 <script>
 // @ is an alias to /src
 import Message from '@/components/Message.vue'
-import ToggleSwitch from '@/components/ToggleSwitch.vue'
 import MessagesCSV from '@/assets/csv/messages.csv'
 
 import Masonry from 'masonry-layout'
@@ -28,43 +21,49 @@ import AOS from 'aos'
 import $ from 'jquery'
 import 'magnific-popup/dist/jquery.magnific-popup'
 
+const countries = require('i18n-iso-countries')
+countries.registerLocale(require('i18n-iso-countries/langs/en.json'))
+countries.registerLocale(require('i18n-iso-countries/langs/ja.json'))
+
 export default {
   name: 'Messages',
   components: {
-    Message,
-    ToggleSwitch
+    Message
   },
   data: () => {
     const filteredMessages = []
-    const crestOptions = ['gold', 'green', 'pink', 'purple', 'rainbow', 'silver', 'orange']
-    const productOptions = ['coffee', 'drink', 'shot', 'tail']
     MessagesCSV.map(
       (record, idx) => {
         const filteredRecord = {
           idx: idx,
-          name: record.Nickname,
+          name: record.Name,
+          twitter: record['Twitter ID'],
+          country_code: null,
+          country_name: null,
           message: null,
+          submessage: null,
           images: [],
           youtube_id: null,
           has_media: false,
-          lang: null,
-          nsfw: false,
-          crest: crestOptions[Math.floor(Math.random() * crestOptions.length)],
-          product: productOptions[Math.floor(Math.random() * productOptions.length)]
+          lang: null
         }
-        if (record['Text Submission (Accepted/Pending/Rejected/NONE)'] === 'Accepted') {
-          filteredRecord.message = record['Enter your message:']
+        if (record.Message) {
+          filteredRecord.message = record.Message
+          if (record['Message (Native)']) {
+            filteredRecord.submessage = filteredRecord.message
+            filteredRecord.message = record['Message (Native)']
+          }
           const jpCharacters = filteredRecord.message.match(/[\u3000-\u303f\u3040-\u309f\u30a0-\u30ff\uff00-\uff9f\u4e00-\u9faf\u3400-\u4dbf]/)
           if (jpCharacters !== null) {
             filteredRecord.lang = 'ja'
           }
         }
-        if (record['Video Submission (Accepted/Pending/Rejected/NONE)'] === 'Accepted' && record['Youtube ID']) {
-          filteredRecord.youtube_id = record['Youtube ID']
-          filteredRecord.has_media = true
-        }
-        if (record['Image Submission (Accepted/Pending/Rejected/NONE)'] === 'Accepted' && record['Uploaded file name']) {
-          const imageFiles = record['Uploaded file name'].split(',')
+        // if (record['Video Submission (Accepted/Pending/Rejected/NONE)'] === 'Accepted' && record['Youtube ID']) {
+        //   filteredRecord.youtube_id = record['Youtube ID']
+        //   filteredRecord.has_media = true
+        // }
+        if (record.art) {
+          const imageFiles = record.art.split(',')
           imageFiles.forEach((v, i) => {
             const image = {
               idx: i,
@@ -78,11 +77,15 @@ export default {
             image.image_file_small = require('@/assets/images/fanart/small/' + filename + '_Small.' + ext)
             filteredRecord.images.push(image)
             filteredRecord.has_media = true
-
-            if (record['Is this lewd?'] === 'Yes') {
-              filteredRecord.nsfw = true
-            }
           })
+        }
+        if (record['Place of Origin']) {
+          const country = record['Place of Origin']
+          const countryCode = countries.getAlpha2Code(country, 'en')
+          if (countryCode) {
+            filteredRecord.country_code = countryCode.toLowerCase()
+            filteredRecord.country_name = countries.getName(countryCode, 'en') + ' / ' + countries.getName(countryCode, 'ja')
+          }
         }
         if (!filteredRecord.message && !filteredRecord.has_media) {
           return
