@@ -51,7 +51,7 @@ p {
   font-size: 1.3rem;
   padding-left: 1rem;
   padding-right: 1rem;
-  text-align: justify;
+  text-align: center;
 }
 
 @media (min-width:801px)  {
