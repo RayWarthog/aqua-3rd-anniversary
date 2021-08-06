@@ -50,7 +50,8 @@ p {
   text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
   font-size: 1.3rem;
   padding-left: 1rem;
-  padding-right: 1rem
+  padding-right: 1rem;
+  text-align: justify;
 }
 
 @media (min-width:801px)  {
